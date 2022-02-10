@@ -1,10 +1,12 @@
 <div class="flex justify-center items-center">
+
   <form #flightForm="ngForm"
         (ngSubmit)= "onAdd(flightForm)"
-        class="w-1/2 flex flex-col justify-center items-center p-6 shadow-xl mt-8 bg-white">
+        class="sm:w-full md:w-1/2 flex flex-col justify-center items-center p-6 shadow-xl mt-8 bg-white">
+    <legend class="text-xl text-blue-900 underline mb-10">Formulaire de création de vol</legend>
 
-    <div class="grid w-1/2">
-      <label class="mb-2">Numéro de vol</label>
+    <div class="grid sm:w-1/2 mt-8">
+      <label class="mb-2">Numéro de vol (*)</label>
       <input type="text"
              required
              class="rounded border-2 mb-8 h-10 px-4 mr-9"
@@ -14,19 +16,20 @@
       />
     </div>
 
-    <div class="grid w-1/2">
-      <label class="mb-2">Ville de départ</label>
+    <div class="grid w-full lg:w-1/2">
+      <label class="mb-2">Ville de départ (*)</label>
       <select
         class="rounded border-2 mb-8 h-10 px-4 mr-9"
         name="takeOffCity"
+        id="takeOffCity"
         ngModel
         required>
         <option *ngFor="let city of cities" value={{city.id}}>{{city.cityName}}</option>
       </select>
     </div>
 
-    <div class="grid w-1/2">
-      <label class="mb-2">Ville d'arrivée</label>
+    <div class="grid w-full lg:w-1/2">
+      <label class="mb-2">Ville d'arrivée (*)</label>
       <select
         class="rounded border-2 mb-8 h-10 px-4 mr-9"
         ngModel
@@ -36,8 +39,8 @@
       </select>
     </div>
 
-    <div class="grid w-1/2">
-      <label class="mb-2">Compagnie</label>
+    <div class="grid w-full lg:w-1/2">
+      <label class="mb-2">Compagnie (*)</label>
       <select
         class="rounded border-2 mb-8 h-10 px-4 mr-9"
         ngModel
@@ -48,8 +51,8 @@
     </div>
 
 
-    <div class="grid w-1/2">
-      <label class="mb-2">Date de départ</label>
+    <div class="grid w-full lg:w-1/2">
+      <label class="mb-2">Date de départ (*)</label>
       <input type="datetime-local"
              required
              class="rounded border-2 mb-8 h-10 px-4 mr-9"
@@ -60,8 +63,8 @@
       />
     </div>
 
-    <div class="grid w-1/2">
-      <label class="mb-2">Date d'arrivée</label>
+    <div class="grid w-full lg:w-1/2">
+      <label class="mb-2">Date d'arrivée (*)</label>
       <input type="datetime-local"
              required
              class="rounded border-2 mb-8 h-10 px-4 mr-9"
@@ -72,8 +75,8 @@
       />
     </div>
 
-    <div class="grid w-1/2">
-      <label class="mb-2">Classe</label>
+    <div class="grid w-full lg:w-1/2">
+      <label class="mb-2">Classe (*)</label>
       <select
         class="rounded border-2 mb-8 h-10 px-4 mr-9"
         ngModel
@@ -85,8 +88,8 @@
       </select>
     </div>
 
-    <div class="grid w-1/2">
-      <label class="mb-2">Prix (en FCFA)</label>
+    <div class="grid sm:w-1/2">
+      <label class="mb-2">Prix (en FCFA) (*)</label>
       <input type="number"
              min="1"
              required
@@ -97,10 +100,10 @@
       />
     </div>
 
-      <button class="text-white w-1/4 text-md px-12 rounded border-2 h-10 mt-8 border-green-800 m-4 bg-green-800"
+      <button class="text-white w-auto  text-md px-12 rounded border-2 h-10 mt-8 border-green-800 m-4 bg-green-800"
               type="submit"
               [disabled]="!flightForm.valid">
-        Ajouter
+        Valider
       </button>
 
   </form>
