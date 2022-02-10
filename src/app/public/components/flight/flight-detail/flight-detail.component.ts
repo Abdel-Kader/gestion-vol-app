@@ -20,6 +20,6 @@ export class FlightDetailComponent implements OnInit {
   onSearch() {
     this.flightService.flightDetail(this.flightID).subscribe(res => {
       this.flight = res;
-    }, error => console.log(error))
+    }, error => alert(error.error.message))
   }
 }

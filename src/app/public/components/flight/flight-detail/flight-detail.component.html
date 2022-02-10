@@ -1,18 +1,18 @@
 <div class="flex justify-center items-center">
-  <form (ngSubmit)= "onSearch()" class="flex w-auto justify-center p-6 shadow-xl mt-8 bg-white">
+  <form (ngSubmit)= "onSearch()" class="grid lg:flex w-full lg:w-auto justify-center p-2 lg:p-6 shadow-xl mt-8 bg-white">
 
     <div class="grid">
-      <label class="mb-2">Numéro du vol</label>
+      <label class="mb-2">Entrez un numéro de vol pour afficher ses détails</label>
       <input type="text"
              required
-             class="rounded border-2 mb-8 h-10 px-4 mr-9 w-auto"
+             class="rounded border-2 mb-8 h-10 px-2 lg:px-4 lg:mr-9 w-auto"
              id="number"
              name="number"
              [(ngModel)]="flightID"
       />
     </div>
 
-    <button class="text-white text-md px-12 rounded border-2 h-10 mt-8 border-blue-800 m-4 bg-blue-800"
+    <button class="text-white text-md w-auto px-2 rounded border-2 h-10 mt-8 border-blue-800 m-4 bg-blue-800"
             type="submit">
       Rechercher
     </button>
