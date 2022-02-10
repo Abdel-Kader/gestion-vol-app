@@ -1,0 +1,45 @@
+<h1 *ngIf="flights !== undefined && flights?.length != 0"
+    class="text-center mt-3 text-sm font-semibold">
+  <span *ngIf="flights?.length == 1"> 1 Résultat trouvé </span>
+  <span *ngIf="flights?.length != 1"> {{flights?.length}} Résultats trouvés </span>
+
+</h1>
+<br/>
+
+<div *ngIf="flights !== undefined" class="flex flex-col items-center justify-center">
+  <div *ngFor="let flight of flights" class="flex shadow-2xl border-t-2 mt-4 rounded-t-md border-blue-800 bg-white justify-between w-1/2">
+    <div class="w-5/6 justify-center">
+      <div class="m-1 mr-2 h-12 relative flex justify-center items-center rounded-full text-lg text-white">
+        <img src="assets/images/logo.PNG" alt="logo" class="rounded-full w-16"/>
+        <p class="text-blue-800 text-md font-bold">{{flight.company?.companyName}}</p>
+      </div>
+
+      <br/>
+      <div class="flex justify-between ml-20">
+        <div>
+          <h5 class="text-amber-800 text-md font-semibold"> {{flight.takeOffDate | date:'medium'}} </h5>
+          <h6 class="text-blue-800 font-semibold"> {{flight.takeOffCity?.cityName}} </h6>
+        </div>
+        <p>=======></p>
+        <div>
+          <h5 class="text-amber-800 text-md font-semibold"> {{flight.landingDate | date: 'medium'}} </h5>
+          <h6 class="text-blue-800 font-semibold"> {{flight.landingCity?.cityName }} </h6>
+        </div>
+      </div>
+      <br/>
+    </div>
+    <div class="border-l-4 w-1/6 grid justify-center content-center">
+      <h3 class="text-lg text-blue-800 font-bold">{{flight.classPrice}} FCFA</h3>
+      <h6 class="text-center italic">{{flight.className}}</h6>
+    </div>
+    <br/>
+  </div>
+  <br/>
+</div>
+<div *ngIf="flights?.length == 0" class="flex justify-center mt-8">
+  <div class="flex flex-col w-1/2 justify-center items-center">
+    <img src="assets/images/not-found.png" alt="logo" class="rounded-full w-16"/>
+    <h2 class="text-xl font-semibold text-center text-blue-400">Aucun résultat trouvé</h2>
+  </div>
+</div>
+

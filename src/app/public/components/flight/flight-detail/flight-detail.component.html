@@ -1,0 +1,71 @@
+<div class="flex justify-center items-center">
+  <form (ngSubmit)= "onSearch()" class="flex w-auto justify-center p-6 shadow-xl mt-8 bg-white">
+
+    <div class="grid">
+      <label class="mb-2">Numéro du vol</label>
+      <input type="text"
+             required
+             class="rounded border-2 mb-8 h-10 px-4 mr-9 w-auto"
+             id="number"
+             name="number"
+             [(ngModel)]="flightID"
+      />
+    </div>
+
+    <button class="text-white text-md px-12 rounded border-2 h-10 mt-8 border-blue-800 m-4 bg-blue-800"
+            type="submit">
+      Rechercher
+    </button>
+  </form>
+
+</div>
+<br/>
+<br/>
+
+<div *ngIf="flight !== undefined" class="flex flex-col items-center justify-center ">
+  <div class="justify-center bg-white w-3/5 border-2">
+    <div class="m-1 mr-2 h-12 relative flex justify-center items-center rounded-full">
+<!--      <img src="assets/images/logo.PNG" alt="logo" class="rounded-full w-16"/>-->
+      <p>Détail du vol N° <span class="text-blue-800 text-md font-bold underline">{{flightID}} </span> :</p>
+    </div>
+
+    <br/>
+    <div class="flex justify-between mx-5">
+      <div>
+        Départ de <span class="text-blue-800 font-semibold"> {{flight.takeOffCity?.cityName}}, {{flight.takeOffCity?.country?.countryName}} </span> :<span class="text-amber-800 text-md font-semibold"> {{flight.takeOffDate | date:'medium'}} </span>
+
+      </div>
+      <div>
+        Arrivée à
+        <span class="text-blue-800 font-semibold">
+          {{flight.landingCity?.cityName}}, {{flight.landingCity?.country?.countryName}}
+        </span> :
+        <span class="text-amber-800 text-md font-semibold">
+          {{flight.landingDate | date:'medium'}}
+        </span>
+      </div>
+    </div>
+    <br/>
+    <div class="flex justify-between mx-5">
+     <div>
+       Classe : <span class="text-center italic">{{flight.className}}</span>
+     </div>
+      <div>
+       Prix total :<span class="text-blue-800 font-bold"> {{flight.classPrice}} FCFA</span>
+     </div>
+    </div>
+<br/>
+    <div class="flex justify-center mx-5">
+      <h5>
+        Ce vol est assuré par la compagnie :
+          <span class="text-blue-800 font-bold">
+            {{flight.company?.companyName}}
+          </span>
+      </h5>
+    </div>
+<br/>
+  </div>
+
+  <br/>
+</div>
+

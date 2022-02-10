@@ -1,0 +1,108 @@
+<div class="flex justify-center items-center">
+  <form #flightForm="ngForm"
+        (ngSubmit)= "onAdd(flightForm)"
+        class="w-1/2 flex flex-col justify-center items-center p-6 shadow-xl mt-8 bg-white">
+
+    <div class="grid w-1/2">
+      <label class="mb-2">Numéro de vol</label>
+      <input type="text"
+             required
+             class="rounded border-2 mb-8 h-10 px-4 mr-9"
+             id="flightID"
+             name="flightID"
+             ngModel
+      />
+    </div>
+
+    <div class="grid w-1/2">
+      <label class="mb-2">Ville de départ</label>
+      <select
+        class="rounded border-2 mb-8 h-10 px-4 mr-9"
+        name="takeOffCity"
+        ngModel
+        required>
+        <option *ngFor="let city of cities" value={{city.id}}>{{city.cityName}}</option>
+      </select>
+    </div>
+
+    <div class="grid w-1/2">
+      <label class="mb-2">Ville d'arrivée</label>
+      <select
+        class="rounded border-2 mb-8 h-10 px-4 mr-9"
+        ngModel
+        name="landingCity"
+        required>
+        <option *ngFor="let city of cities" value={{city.id}}>{{city.cityName}}</option>
+      </select>
+    </div>
+
+    <div class="grid w-1/2">
+      <label class="mb-2">Compagnie</label>
+      <select
+        class="rounded border-2 mb-8 h-10 px-4 mr-9"
+        ngModel
+        name="company"
+        required>
+        <option *ngFor="let company of companies" value={{company.id}}>{{company.companyName}}</option>
+      </select>
+    </div>
+
+
+    <div class="grid w-1/2">
+      <label class="mb-2">Date de départ</label>
+      <input type="datetime-local"
+             required
+             class="rounded border-2 mb-8 h-10 px-4 mr-9"
+             id="takeOffDate"
+             name="takeOffDate"
+             min="{{minTakeOffDate | date:'yyyy-MM-dd HH:mm'}}"
+             ngModel
+      />
+    </div>
+
+    <div class="grid w-1/2">
+      <label class="mb-2">Date d'arrivée</label>
+      <input type="datetime-local"
+             required
+             class="rounded border-2 mb-8 h-10 px-4 mr-9"
+             id="landingDate"
+             name="landingDate"
+             ngModel
+             min="{{flightForm.form.value.takeOffDate | date:'yyyy-MM-dd HH:mm'}}"
+      />
+    </div>
+
+    <div class="grid w-1/2">
+      <label class="mb-2">Classe</label>
+      <select
+        class="rounded border-2 mb-8 h-10 px-4 mr-9"
+        ngModel
+        name="className"
+        required>
+        <option value="economy">Economy</option>
+        <option value="business">Business</option>
+        <option value="première">Première</option>
+      </select>
+    </div>
+
+    <div class="grid w-1/2">
+      <label class="mb-2">Prix (en FCFA)</label>
+      <input type="number"
+             min="1"
+             required
+             class="rounded border-2 mb-8 h-10 px-4 mr-9"
+             id="classPrice"
+             name="classPrice"
+             ngModel
+      />
+    </div>
+
+      <button class="text-white w-1/4 text-md px-12 rounded border-2 h-10 mt-8 border-green-800 m-4 bg-green-800"
+              type="submit"
+              [disabled]="!flightForm.valid">
+        Ajouter
+      </button>
+
+  </form>
+
+</div>
