@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  baseURL: "https://gestion-vol.herokuapp.com/gestionvol/v1/",
-  // remoteBaseURL: "https://gestion-vol.herokuapp.com/gestionvol/v1/"
+  baseURL: "http://localhost:8080/gestionvol/v1/"
 };
 
 /*
