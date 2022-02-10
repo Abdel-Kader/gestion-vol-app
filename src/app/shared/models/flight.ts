@@ -1,5 +1,4 @@
-import {Company, ICompany} from "./company";
-import {Airport, IAirport} from "./airport";
+import { ICompany } from "./company";
 import {ICity} from "./city";
 
 export interface IFlight {
