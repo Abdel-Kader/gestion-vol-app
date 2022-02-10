@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Flight} from "../../../shared/models/flight";
 import {environment} from "../../../../environments/environment";
-import {catchError, finalize, Observable} from "rxjs";
+import {finalize, Observable} from "rxjs";
 import {LoaderService} from "../loader.service";
 
 @Injectable({
